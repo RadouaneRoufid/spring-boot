@@ -1,8 +1,8 @@
-package com.roufid.tutoriel.dao.postgresql;
+package com.roufid.tutorial.dao.postgresql;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.roufid.tutoriel.entity.postgresql.Book;
+import com.roufid.tutorial.entity.postgresql.Book;
 
 /**
  * Book repository.

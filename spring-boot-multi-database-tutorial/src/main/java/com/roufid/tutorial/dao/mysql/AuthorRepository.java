@@ -1,8 +1,8 @@
-package com.roufid.tutoriel.dao.mysql;
+package com.roufid.tutorial.dao.mysql;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.roufid.tutoriel.entity.mysql.Author;
+import com.roufid.tutorial.entity.mysql.Author;
 
 /**
  * Author Repository.

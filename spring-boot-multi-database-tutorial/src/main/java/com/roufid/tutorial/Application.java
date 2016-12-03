@@ -1,4 +1,4 @@
-package com.roufid.tutoriel;
+package com.roufid.tutorial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.roufid.tutoriel.entity.mysql;
+package com.roufid.tutorial.entity.mysql;
 
 import java.io.Serializable;
 

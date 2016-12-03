@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.roufid.tutoriel.dao.mysql.AuthorRepository;
-import com.roufid.tutoriel.dao.postgresql.BookRepository;
-import com.roufid.tutoriel.entity.mysql.Author;
-import com.roufid.tutoriel.entity.postgresql.Book;
+import com.roufid.tutorial.dao.mysql.AuthorRepository;
+import com.roufid.tutorial.dao.postgresql.BookRepository;
+import com.roufid.tutorial.entity.mysql.Author;
+import com.roufid.tutorial.entity.postgresql.Book;
 
 
 @RunWith(SpringRunner.class)

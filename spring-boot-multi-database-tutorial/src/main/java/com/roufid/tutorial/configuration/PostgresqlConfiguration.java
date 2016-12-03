@@ -1,4 +1,4 @@
-package com.roufid.tutoriel.configuration;
+package com.roufid.tutorial.configuration;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,6 +15,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -24,10 +25,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.roufid.tutoriel.entity.mysql.Author;
+import com.roufid.tutorial.entity.postgresql.Book;
 
 /**
- * Spring configuration of the "mysql" database.
+ * Spring configuration of the "PostgreSQL" database.
  * 
  * @author Radouane ROUFID.
  *
@@ -35,20 +36,21 @@ import com.roufid.tutoriel.entity.mysql.Author;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-		entityManagerFactoryRef = "mysqlEntityManager", 
-		transactionManagerRef = "mysqlTransactionManager", 
-		basePackages = "com.roufid.tutoriel.dao.mysql"
+		entityManagerFactoryRef = "postgresqlEntityManager", 
+		transactionManagerRef = "postgresqlTransactionManager", 
+		basePackages = "com.roufid.tutoriel.dao.postgresql"
 )
-public class MysqlConfiguration {
+public class PostgresqlConfiguration {
 
 	/**
-	 * MySQL datasource definition.
+	 * PostgreSQL datasource definition.
 	 * 
 	 * @return datasource.
 	 */
 	@Bean
-	@ConfigurationProperties(prefix = "spring.mysql.datasource")
-	public DataSource mysqlDataSource() {
+	@Primary
+	@ConfigurationProperties(prefix = "spring.postgresql.datasource")
+	public DataSource postgresqlDataSource() {
 		return DataSourceBuilder
 					.create()
 					.build();
@@ -60,28 +62,27 @@ public class MysqlConfiguration {
 	 * @param builder an EntityManagerFactoryBuilder.
 	 * @return LocalContainerEntityManagerFactoryBean.
 	 */
-	@Bean(name = "mysqlEntityManager")
-	public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
+	@Primary
+	@Bean(name = "postgresqlEntityManager")
+	public LocalContainerEntityManagerFactoryBean postgresqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
 		return builder
-					.dataSource(mysqlDataSource())
+					.dataSource(postgresqlDataSource())
 					.properties(hibernateProperties())
-					.packages(Author.class)
-					.persistenceUnit("mysqlPU")
+					.packages(Book.class)
+					.persistenceUnit("postgresqlPU")
 					.build();
 	}
 
-	/**
-	 * @param entityManagerFactory
-	 * @return
-	 */
-	@Bean(name = "mysqlTransactionManager")
-	public PlatformTransactionManager mysqlTransactionManager(@Qualifier("mysqlEntityManager") EntityManagerFactory entityManagerFactory) {
+	@Primary
+	@Bean(name = "postgresqlTransactionManager")
+	public PlatformTransactionManager postgresqlTransactionManager(@Qualifier("postgresqlEntityManager") EntityManagerFactory entityManagerFactory) {
 		return new JpaTransactionManager(entityManagerFactory);
 	}
 
 	private Map<String, Object> hibernateProperties() {
 
 		Resource resource = new ClassPathResource("hibernate.properties");
+		
 		try {
 			Properties properties = PropertiesLoaderUtils.loadProperties(resource);
 			return properties.entrySet().stream()

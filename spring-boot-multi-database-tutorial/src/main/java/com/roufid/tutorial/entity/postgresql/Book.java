@@ -1,4 +1,4 @@
-package com.roufid.tutoriel.entity.postgresql;
+package com.roufid.tutorial.entity.postgresql;
 
 import java.io.Serializable;
 
