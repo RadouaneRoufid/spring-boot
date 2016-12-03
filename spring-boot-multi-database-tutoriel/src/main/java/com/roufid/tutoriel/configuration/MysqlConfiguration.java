@@ -46,13 +46,13 @@ public class MysqlConfiguration {
 	 * 
 	 * @return datasource.
 	 */
-@Bean
-@ConfigurationProperties(prefix = "spring.mysql.datasource")
-public DataSource mysqlDataSource() {
-	return DataSourceBuilder
-				.create()
-				.build();
-}
+	@Bean
+	@ConfigurationProperties(prefix = "spring.mysql.datasource")
+	public DataSource mysqlDataSource() {
+		return DataSourceBuilder
+					.create()
+					.build();
+	}
 
 	/**
 	 * Entity manager definition. 

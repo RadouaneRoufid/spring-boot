@@ -47,14 +47,14 @@ public class PostgresqlConfiguration {
 	 * 
 	 * @return datasource.
 	 */
-@Bean
-@Primary
-@ConfigurationProperties(prefix = "spring.postgresql.datasource")
-public DataSource postgresqlDataSource() {
-	return DataSourceBuilder
-				.create()
-				.build();
-}
+	@Bean
+	@Primary
+	@ConfigurationProperties(prefix = "spring.postgresql.datasource")
+	public DataSource postgresqlDataSource() {
+		return DataSourceBuilder
+					.create()
+					.build();
+	}
 
 	/**
 	 * Entity manager definition. 
@@ -62,22 +62,22 @@ public DataSource postgresqlDataSource() {
 	 * @param builder an EntityManagerFactoryBuilder.
 	 * @return LocalContainerEntityManagerFactoryBean.
 	 */
-@Primary
-@Bean(name = "postgresqlEntityManager")
-public LocalContainerEntityManagerFactoryBean postgresqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
-	return builder
-				.dataSource(postgresqlDataSource())
-				.properties(hibernateProperties())
-				.packages(Book.class)
-				.persistenceUnit("postgresqlPU")
-				.build();
-}
+	@Primary
+	@Bean(name = "postgresqlEntityManager")
+	public LocalContainerEntityManagerFactoryBean postgresqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
+		return builder
+					.dataSource(postgresqlDataSource())
+					.properties(hibernateProperties())
+					.packages(Book.class)
+					.persistenceUnit("postgresqlPU")
+					.build();
+	}
 
-@Primary
-@Bean(name = "postgresqlTransactionManager")
-public PlatformTransactionManager postgresqlTransactionManager(@Qualifier("postgresqlEntityManager") EntityManagerFactory entityManagerFactory) {
-	return new JpaTransactionManager(entityManagerFactory);
-}
+	@Primary
+	@Bean(name = "postgresqlTransactionManager")
+	public PlatformTransactionManager postgresqlTransactionManager(@Qualifier("postgresqlEntityManager") EntityManagerFactory entityManagerFactory) {
+		return new JpaTransactionManager(entityManagerFactory);
+	}
 
 	private Map<String, Object> hibernateProperties() {
 
