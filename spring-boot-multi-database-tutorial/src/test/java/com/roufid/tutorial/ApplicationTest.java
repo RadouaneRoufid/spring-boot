@@ -1,4 +1,4 @@
-package com.roufid.tutoriel;
+package com.roufid.tutorial;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,6 +12,7 @@ import com.roufid.tutorial.dao.mysql.AuthorRepository;
 import com.roufid.tutorial.dao.postgresql.BookRepository;
 import com.roufid.tutorial.entity.mysql.Author;
 import com.roufid.tutorial.entity.postgresql.Book;
+
 
 
 @RunWith(SpringRunner.class)

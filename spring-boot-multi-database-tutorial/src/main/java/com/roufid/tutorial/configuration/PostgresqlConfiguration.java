@@ -38,7 +38,7 @@ import com.roufid.tutorial.entity.postgresql.Book;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "postgresqlEntityManager", 
 		transactionManagerRef = "postgresqlTransactionManager", 
-		basePackages = "com.roufid.tutoriel.dao.postgresql"
+		basePackages = "com.roufid.tutorial.dao.postgresql"
 )
 public class PostgresqlConfiguration {
 

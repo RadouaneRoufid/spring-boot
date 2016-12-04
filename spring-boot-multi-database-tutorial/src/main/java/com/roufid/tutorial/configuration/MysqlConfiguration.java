@@ -37,7 +37,7 @@ import com.roufid.tutorial.entity.mysql.Author;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "mysqlEntityManager", 
 		transactionManagerRef = "mysqlTransactionManager", 
-		basePackages = "com.roufid.tutoriel.dao.mysql"
+		basePackages = "com.roufid.tutorial.dao.mysql"
 )
 public class MysqlConfiguration {
 
